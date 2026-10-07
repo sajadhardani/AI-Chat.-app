@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "IRANSans";
+}
+
+html {
+  direction: rtl;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.chat-input{
+  min-height: 50px;
+}
+
+.h-auto {
+  height: fit-content;
+}
+
+.login-card {
+  width: 400px;
+  min-height: 300px;
+  align-content: center;
+  border: 2px solid black;
+}

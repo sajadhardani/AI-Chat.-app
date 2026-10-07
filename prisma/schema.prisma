@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int            @id @unique @default(autoincrement())
+  name          String
+  username      String
+  email         String
+  password      String
+  created       DateTime       @default(now())
+  tokens        Tokens[]
+  conversations Conversation[]
+}
+
+model Tokens {
+  user_id   Int
+  token     String
+  device_id String
+  user      User   @relation(fields: [user_id], references: [id])
+
+  @@id([token, user_id])
+}
+
+model Conversation {
+  id       Int        @id @default(autoincrement())
+  user_id  Int
+  user     User       @relation(fields: [user_id], references: [id])
+  created  DateTime   @default(now())
+  title    String
+  messages Messages[]
+}
+
+model Messages {
+  conversation_id Int
+  conversation    Conversation @relation(fields: [conversation_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  sender          Role @default(USER)
+  content         String @db.LongText
+  created         DateTime     @default(now())
+
+  @@id([created, conversation_id])
+}
+
+enum Role {
+  BOT
+  USER
+}

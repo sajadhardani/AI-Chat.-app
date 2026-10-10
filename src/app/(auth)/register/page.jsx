@@ -15,9 +15,9 @@ export default function RegisterPage() {
       <Card className="h-auto login-card">
         <Form
           form={form}
-          onFinish={async(value) => {
-              value.password =await passwordHasher(value.password)
-              console.log(value);
+          onFinish={async (value) => {
+            value.password = await passwordHasher(value.password);
+            console.log(value);
             axios
               .post(`${BASE_URL}/register`, value)
               .then((res) => {

@@ -54,9 +54,9 @@ const MainLayout = ({ children }) => {
 
   const items = [
     getItem(
-      <Link href={"/login"}>   ورود و ثبت نام  </Link>,
+      <Link href={"/login"}>ورود و ثبت نام</Link>,
       "/login",
-      <UserOutlined />,
+      <UserOutlined />
     ),
     getItem(
       <Link href={"/"}>گفتگو ها</Link>,
@@ -67,16 +67,16 @@ const MainLayout = ({ children }) => {
           <Tooltip title={conv.title}>
             <Link href={`/chat/${conv.id}`}>{conv.title}</Link>
           </Tooltip>,
-          `/chat/${conv.id}`,
-        ),
-      ),
+          `/chat/${conv.id}`
+        )
+      )
     ),
     getItem(
       <Button type="text" onClick={() => logout()}>
         <Link href={"/login"}>خروج</Link>
       </Button>,
       "/exit",
-      <LogoutOutlined />,
+      <LogoutOutlined />
     ),
   ];
 

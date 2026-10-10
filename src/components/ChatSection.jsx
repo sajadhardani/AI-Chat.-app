@@ -9,7 +9,7 @@ import { useLayout } from "@/context/LayoutContext";
 import { useRouter } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 
-export const  ChatSection = ({ chatId }) => {
+export const ChatSection = ({ chatId }) => {
   const [messages, setMessages] = useState([]);
   const [messageApi, contextHolder] = message.useMessage();
   const [input, setInput] = useState("");
